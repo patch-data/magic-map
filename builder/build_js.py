@@ -17,8 +17,6 @@ class DecimalEncoder(json.JSONEncoder):
             return float(o)
         super(DecimalEncoder, self).default(o)
 
-wanted_fields = ['Subdomain','Lat','Lng']
-
 filename =  sys.argv[1]
 
 full_dict = csv.DictReader(open(filename, 'rU'))
@@ -27,7 +25,6 @@ trimmed_dict = {}
 
 for row in full_dict:
 	trimmed_dict[row['Subdomain']] = [Decimal(row['Lat']),Decimal(row['Lng'])]
-	
 	
 with open('patches.js', 'w') as outfile:
 	outfile.write('var lookup = ')
