@@ -29,5 +29,6 @@ for row in full_dict:
 	trimmed_dict[row['Subdomain']] = [Decimal(row['Lat']),Decimal(row['Lng'])]
 	
 	
-with open('patches.json', 'w') as outfile:
+with open('patches.js', 'w') as outfile:
+	outfile.write('var lookup = ')
 	json.dump(trimmed_dict,outfile,cls=DecimalEncoder)
